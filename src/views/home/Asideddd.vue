@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { get } from "@/api/axios.js";
 export default {
   data() {
     return {};
@@ -56,6 +57,7 @@ export default {
 
   mounted() {
     // console.log(this.$router);
+    this.getAsidelist();
   },
 
   methods: {
@@ -64,6 +66,11 @@ export default {
     },
     handleClose(key, keyPath) {
       // console.log(key, keyPath);
+    },
+    async getAsidelist() {
+      let res = await get("/api/aside");
+      console.log(res);
+      console.log("object");
     },
   },
 };

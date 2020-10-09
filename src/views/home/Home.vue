@@ -6,7 +6,7 @@
         <el-col :span="6" :offset="18">
           <el-dropdown @command="handleCommand">
             <span class="el-dropdown-link">
-              欢迎{{this.name}}
+              欢迎{{ this.name }}
               <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu>
@@ -30,13 +30,13 @@
           <el-breadcrumb separator="/">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
             <el-breadcrumb-item v-for="i in $route.matched" :key="i.meta.id">
-              <a href="i.path">{{i.meta.name}}</a>
+              <a href="i.path">{{ i.meta.name }}</a>
             </el-breadcrumb-item>
           </el-breadcrumb>
           <router-view></router-view>
         </el-main>
         <!-- Foot -->
-        <el-footer>Footer</el-footer>
+        <el-footer> </el-footer>
       </el-container>
     </el-container>
   </el-container>
@@ -48,6 +48,8 @@ export default {
   data() {
     return {
       name: sessionStorage.getItem("name"),
+      page: 0,
+      num: 1,
     };
   },
 
@@ -60,6 +62,14 @@ export default {
   mounted() {},
 
   methods: {
+    handlenum(e) {
+      this.page = e;
+      console.log(e);
+    },
+    handleChangepage(a) {
+      this.num = a;
+      console.log(this.num);
+    },
     handleCommand(command) {
       if (command === "a") {
         this.$message({
@@ -94,13 +104,13 @@ export default {
   background-color: #e9eef3;
   color: #333;
   text-align: center;
-  line-height: 160px;
+  /* line-height: 50px; */
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 body > .el-container {
-  margin-bottom: 40px;
   height: 100%;
 }
 
